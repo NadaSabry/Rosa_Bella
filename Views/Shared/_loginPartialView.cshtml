@@ -1,0 +1,24 @@
+﻿@using Rosa_Bella.Controllers;
+@using Rosa_Bella.Services;
+
+<ul class="nav navbar-nav navbar-right">
+    @if (Authentication.IsLoggedIn())
+    {
+        <li class="nav-item">
+            <a asp-controller="User" asp-action="Profile"> <img class="rounded-circle" style="object-fit:cover" width="50px" height="50px" src="~@Authentication.LoggedInUser.UserImageUrl" asp-append-version=true/> </a>
+           <!-- <a class="nav-link text-dark fw-bold" asp-area="" asp-controller="User" asp-action="Profile">@Authentication.LoggedInUser.Name</a> -->
+        </li>
+        <li class="nav-item">
+             <a class = "btn text-light my-sm-0 m-1 style="text-decoration:none;" role="button"  style="text-decoration:none;" href="/User/Logout">Logout <img style="width:15px; height:18px;" src="~/Images/logout2.png" /></a>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+             <a class = "btn btn-outline-danger  my-sm-0 text-light m-1" style="text-decoration:none;" href="/User/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+        </li>
+        <li class="nav-item">
+             <a class = "btn btn-danger text-light  my-sm-0 m-1" role="button"  style="text-decoration:none;" href="/User/Register"><span class="glyphicon glyphicon-user"></span>Register</a>
+        </li>
+    }
+</ul>

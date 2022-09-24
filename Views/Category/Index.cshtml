@@ -1,0 +1,47 @@
+﻿@model Rosa_Bella.Models.Category
+
+<link rel="stylesheet" href="~/css/CategoryStyle.css" asp-append-version="true" />
+
+<!--
+<div class="container">
+    <form asp-action="AddCategory">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group w-50 " >
+           <label asp-for="CategoryName" class="control-label" ></label>
+           <input asp-for="CategoryName" class="form-control" required/>
+           <span asp-validation-for="CategoryName" class="text-danger"></span>
+        </div>
+        <div class="m-1">
+           <input type="submit" value="Add Category"  class="btn btn-outline-dark" /> 
+        </div>
+    </form>
+</div>
+<br />
+-->
+
+<div class="row container justify-content-center ">
+    <a href="#" class="col-3 card m-1 text-dark" style="background-color:#DCDCDC; text-decoration:none;">
+        <h4> ملابس اطفالي  <img src="~/Images/enter.png" alt="no image" style="width: 30px; height: 30px;" /> </h4>
+    </a>
+    <a href="#" class="col-3 card m-1 text-dark" style="background-color:#DCDCDC; text-decoration:none;">
+        <h4> ملابس اطفالي  <img src="~/Images/enter.png" alt="no image" style="width: 30px; height: 30px;" /> </h4>
+    </a>
+    <a href="#" class="col-3 card m-1 text-dark" style="background-color:#DCDCDC; text-decoration:none;">
+        <h4> ملابس اطفالي  <img src="~/Images/enter.png" alt="no image" style="width: 30px; height: 30px;" /> </h4>
+    </a>
+    <a href="#" class="col-3 card m-1 text-dark" style="background-color:#DCDCDC; text-decoration:none;">
+        <h4> ملابس اطفالي  <img src="~/Images/enter.png" alt="no image" style="width: 30px; height: 30px;" /> </h4>
+    </a>
+    <a href="#" class="col-3 card m-1 text-dark" style="background-color:#DCDCDC; text-decoration:none;">
+        <h4> ملابس اطفالي  <img src="~/Images/enter.png" alt="no image" style="width: 30px; height: 30px;" /> </h4>
+    </a>
+    <a href="#" class="col-3 card m-1 text-dark" style="background-color:#DCDCDC; text-decoration:none;">
+        <h4> ملابس اطفالي  <img src="~/Images/enter.png" alt="no image" style="width: 30px; height: 30px;" /> </h4>
+    </a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

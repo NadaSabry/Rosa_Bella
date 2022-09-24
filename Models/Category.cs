@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce_Software_Project.Models;
+namespace Rosa_Bella.Models;
 
 public class Category
 {

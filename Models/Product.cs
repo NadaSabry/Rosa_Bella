@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Ecommerce_Software_Project.Models;
+namespace Rosa_Bella.Models;
 
 public class Product
 {

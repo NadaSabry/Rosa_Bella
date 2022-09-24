@@ -1,4 +1,4 @@
-﻿using Ecommerce_Software_Project.Models;
+﻿using Rosa_Bella.Models;
 using Microsoft.EntityFrameworkCore;
 using Rosa_Bella.Models;
 

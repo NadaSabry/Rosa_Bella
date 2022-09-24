@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
 using Rosa_Bella.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,7 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 // connection to DB
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
-option.UseSqlServer(builder.Configuration.GetConnectionString("DBCon"))); 
+option.UseSqlServer(builder.Configuration.GetConnectionString("DBCon")));
+
+builder.Services.AddMvc().AddNToastNotifyToastr(new ToastrOptions()
+{
+    ProgressBar = true,
+    PositionClass = ToastPositions.TopRight,
+    PreventDuplicates = true,
+    CloseButton = true
+});
 
 var app = builder.Build();
 

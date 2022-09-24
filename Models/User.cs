@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Ecommerce_Software_Project.Models;
+namespace Rosa_Bella.Models;
 
 public class User
 {
@@ -12,6 +12,7 @@ public class User
     public string? UserImageUrl { get; set; }
 
     [Required]
+    [DataType(DataType.EmailAddress)]
     public string? Email { get; set; }
 
     [Required]
@@ -29,6 +30,7 @@ public class User
     public string? address { get; set; }
 
     [Required]
+    [Range(10,100,ErrorMessage="please Enter your age between 10 to 100 year")]
     public int? Age { get; set; }
 
     public virtual ICollection<Product>? Products { get; set; }
