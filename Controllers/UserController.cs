@@ -57,27 +57,6 @@ namespace Rosa_Bella.Controllers
         {
             return View();
         }
-        private void SaveFile(IFormFile userImage)
-        {
-            string fullPath = string.Empty;
-
-              // path of file Images in folder wwwroot
-              // compine = connect جمعهم سوا
-            string path = Path.Combine(Ih.WebRootPath, "Images");
-            fullPath = Path.Combine(path, userImage.FileName);
-            userImage.CopyTo(new FileStream(fullPath, FileMode.Create));
-
-        }
-        private bool IsValidImage(IFormFile image)
-        {
-            string imageType = Path.GetExtension(image.FileName).ToLower();
-            string[] validTypes = new string[] { "png", "jpg", "jpeg", "gif" };
-            foreach (var type in validTypes)
-            {
-                if (imageType.Contains(type)) return true;
-            }
-            return false;
-        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -85,18 +64,18 @@ namespace Rosa_Bella.Controllers
         {
             var validEmail = db.Users.FirstOrDefault(x => x.Email == user.Email);
         
-            if (!IsValidImage(userImage) || validEmail !=null || !ModelState.IsValid)
+            if (!file.IsValidImage(userImage) || validEmail !=null || !ModelState.IsValid)
             {
                 user.UserImageUrl = userImage.FileName;
-                if (!IsValidImage(userImage)) ToastNotify.AddErrorToastMessage("Plaease Enter The Valid Image (png, jpg, jpeg, gif)");
+                if (!file.IsValidImage(userImage)) ToastNotify.AddErrorToastMessage("Plaease Enter The Valid Image (png, jpg, jpeg, gif)");
                 if (validEmail != null) ToastNotify.AddErrorToastMessage("Your Email is exist");
                 return View("Register", user);
             }
-            SaveFile(userImage);
+            file.SaveFile(userImage,Ih);
             string image = "/Images/" + userImage.FileName;
             user.UserImageUrl = image;
 
-            db.Add(user);
+            db.Users.Add(user);
             db.SaveChanges();
 
             ToastNotify.AddSuccessToastMessage("Register Succssfuly");
