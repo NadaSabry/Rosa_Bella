@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MainCategory>
+<li class="nav-item dropdown">
+
+      <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="/Category/Index" role="button" aria-expanded="false">الاصناف</a>
+        <ul class="dropdown-menu">
+             <li><a class="dropdown-item" href="/Main/Add_MainCategory">اضافه صنف </a></li>
+             <li><a class="dropdown-item" href="#">Delete Category</a></li>
+             <li><hr class="dropdown-divider"></li>
+          @foreach(var catg in Model)
+          {
+              <li><a class="dropdown-item" href="/Main/Add_MainCategory"> @catg.Name </a>
+                  <img src="~@catg.CategoyImageUrl" style="width:20px; height:20px;"/>
+              </li>
+          }
+             <li><a class="dropdown-item" href="#">Show Category</a></li>
+       </ul>
+</li>
