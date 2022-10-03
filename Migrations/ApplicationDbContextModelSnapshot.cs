@@ -21,37 +21,6 @@ namespace Rosa_Bella.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Rosa_Bella.Models.Category", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CategoyImageUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MainCategorysId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("MainCategoyID")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Season")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MainCategorysId");
-
-                    b.ToTable("Categories");
-                });
-
             modelBuilder.Entity("Rosa_Bella.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -140,7 +109,7 @@ namespace Rosa_Bella.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("CategoryID")
+                    b.Property<int>("MainCategoryID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ProductAddedDate")
@@ -162,6 +131,9 @@ namespace Rosa_Bella.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
+                    b.Property<bool>("Season")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Size")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -169,13 +141,38 @@ namespace Rosa_Bella.Migrations
                     b.Property<int?>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("productTypeID")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryID");
+                    b.HasIndex("MainCategoryID");
 
                     b.HasIndex("UserId");
 
+                    b.HasIndex("productTypeID");
+
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("Rosa_Bella.Models.ProductType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductTypes");
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.User", b =>
@@ -222,15 +219,6 @@ namespace Rosa_Bella.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Rosa_Bella.Models.Category", b =>
-                {
-                    b.HasOne("Rosa_Bella.Models.MainCategory", "MainCategorys")
-                        .WithMany("Categories")
-                        .HasForeignKey("MainCategorysId");
-
-                    b.Navigation("MainCategorys");
-                });
-
             modelBuilder.Entity("Rosa_Bella.Models.Comment", b =>
                 {
                     b.HasOne("Rosa_Bella.Models.Product", "Product")
@@ -244,6 +232,17 @@ namespace Rosa_Bella.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Rosa_Bella.Models.Image", b =>
+                {
+                    b.HasOne("Rosa_Bella.Models.Product", "Products")
+                        .WithMany("Images")
+                        .HasForeignKey("productId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.Like", b =>
@@ -267,9 +266,9 @@ namespace Rosa_Bella.Migrations
 
             modelBuilder.Entity("Rosa_Bella.Models.Product", b =>
                 {
-                    b.HasOne("Rosa_Bella.Models.Category", "Category")
+                    b.HasOne("Rosa_Bella.Models.MainCategory", "MainCategorys")
                         .WithMany("Products")
-                        .HasForeignKey("CategoryID")
+                        .HasForeignKey("MainCategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -277,24 +276,34 @@ namespace Rosa_Bella.Migrations
                         .WithMany("Products")
                         .HasForeignKey("UserId");
 
-                    b.Navigation("Category");
-                });
+                    b.HasOne("Rosa_Bella.Models.ProductType", "ProductTypes")
+                        .WithMany("Products")
+                        .HasForeignKey("productTypeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("Rosa_Bella.Models.Category", b =>
-                {
-                    b.Navigation("Products");
+                    b.Navigation("MainCategorys");
+
+                    b.Navigation("ProductTypes");
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.MainCategory", b =>
                 {
-                    b.Navigation("Categories");
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.Product", b =>
                 {
                     b.Navigation("Comments");
 
+                    b.Navigation("Images");
+
                     b.Navigation("Likes");
+                });
+
+            modelBuilder.Entity("Rosa_Bella.Models.ProductType", b =>
+                {
+                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.User", b =>

@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+// رجالي | حريمي | اطفالي
+
 namespace Rosa_Bella.Models
 {
     public class MainCategory
@@ -11,6 +13,6 @@ namespace Rosa_Bella.Models
         [Display(Name = "Main Categoy Image")]
         public string? CategoyImageUrl { get; set; }
 
-        public virtual ICollection<Category>? Categories { get; set; }   
+        public virtual ICollection<Product>? Products { get; set; }   
     }
 }

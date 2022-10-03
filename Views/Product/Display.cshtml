@@ -1,0 +1,103 @@
+﻿@model Rosa_Bella.ViewModels.DisplayProductVM
+
+<style>
+    .box{
+        box-shadow:0 0 20px 2px rgba(0,0,0,0.1);
+        width:16rem;
+        transition:1s;
+    }
+    .box:hover{
+       transform:scale(1.2);
+       z-index:2;
+       background-color:#dc3545;
+       color:white;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                
+                <h1 class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">Filter</span>
+                </h1>
+
+
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+
+                    <li class="nav-item text-white"> 
+                      <form asp-action="Display">
+                          <li><h5> -----الصنف----- </h5></li>
+                        <div class="form-group">
+                           @for(int i=0;i<Model.mainCategory.Count;i++)
+                           {
+                             <div>
+                                 <input type="hidden" asp-for="@Model.mainCategory[i].Value" />
+                                 <input asp-for="mainCategory[i].Selected" /> @Model.mainCategory[i].Text
+                             </div>
+                           }
+                        </div><br />
+
+                         <li><h5> -----نوع----- </h5></li>
+                       <div class="form-group">
+                          @for(int i=0;i<Model.type.Count;i++)
+                           {
+                             <div>
+                                 <input type="hidden" asp-for="@Model.type[i].Value" />
+                                 <input asp-for="type[i].Selected" /> @Model.type[i].Text
+                             </div>
+                           }
+                        </div><br />
+
+                    <li><h5> -----الفصل----- </h5></li>
+                    <div class="form-group"> 
+                      
+                      <input type="radio" id="summer" name="seasson" value="2">
+                      <label for="summer">صيف</label><br>
+                      <input type="radio" id="winter" name="seasson" value="1">
+                      <label for="winter">شتاء</label><br>
+                  
+                    </div>
+                    <br />
+
+                       <div class="form-group">
+                          <input type="submit" value="Search" class="btn btn-danger"/>
+                        </div>
+                    </form>
+                  </li>
+
+
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="col py-3">
+            <div class="row">
+                    @foreach(var item in Model.product)
+                    {
+                       <div class="col">
+                        <div class="card mb-3 box">
+                            @foreach(var im in item.Images)
+                            {
+                                <img src="@im.ImageUrl" class="card-img-top" alt"no iamage" style="height:18rem;" />
+                                break;
+                            }
+                        <div class="card-body">
+                            <h1 class="card-title">@item.ProductName</h1>
+                            <p class="card-text">
+                                @item.ProductPrice$
+                            </p>
+
+                            <a href="#" class="btn btn-warning">تفاصيل</a>
+                        </div>
+                      </div>
+                    </div>
+                   }
+
+  
+          </div>
+      </div>
+    </div>
+</div>

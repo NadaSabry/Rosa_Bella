@@ -1,4 +1,4 @@
-﻿@model Rosa_Bella.Models.MainCategory
+﻿@model Rosa_Bella.Models.ProductType
 
 
 <div class="container">
@@ -9,26 +9,28 @@
                     <img src="~/Images/add.png" alt="no image" style="width: 100px; height: 100px;" />
                 </div>
                 <h3 class="col-lg-12 text-center text-light">
-                    اضافه صنف جديد
+                    اضافه نوع جديد
                 </h3>
 
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form method="post" asp-action="Add_MainCategory" enctype="multipart/form-data">
+                        <form method="post" asp-action="Add_Category" enctype="multipart/form-data">
                           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
+                     <!-- Name  -->
                             <div class="form-group">
-                               <label asp-for="Name" class="control-label text-light">الاسم  </label>
-                               <input asp-for="Name" class="form-control" required/>
-                               <span asp-validation-for="Name" class="text-danger"></span>
+                               <label asp-for="TypeName" class="control-label text-light">الاسم  </label>
+                               <input asp-for="TypeName" class="form-control" required/>
+                               <span asp-validation-for="TypeName" class="text-danger"></span>
                             </div>
-                         
+
+                    <!-- Image  -->     
                             <div class="form-group my-1">
                               <label class="control-label text-light"> الصوره</label>
                               <input type="file" name="CategoyImageUrl" class="form-control" required />
                            </div>
 
-
+                     <!-- Bottom  -->
                            <div class="col-lg-12 mt-2 mb-2">
                                 <div class="col-lg-6 ">
                                      

@@ -1,0 +1,104 @@
+﻿@model Rosa_Bella.ViewModels.AddProductVM
+
+<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+            <div class="col-lg-6 col-md-8 bg-dark">
+                <div class="col-lg-12 text-center ">
+                    <img src="~/Images/add.png" alt="no image" style="width: 100px; height: 100px;" />
+                </div>
+                <h3 class="col-lg-12 text-center text-light">
+                    اضافه منتج
+                </h3>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form method="post" asp-action="Add_Product" enctype="multipart/form-data">
+                          <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                     <!-- Name  -->
+                            <div class="form-group">
+                               <label asp-for="product.ProductName" class="control-label text-light">الاسم  </label>
+                               <input asp-for="product.ProductName" class="form-control" required/>
+                               <span asp-validation-for="product.ProductName" class="text-danger"></span>
+                            </div>
+
+                    <!-- Image  -->     
+                            <div class="form-group my-1">
+                              <label class="control-label text-light"> الصوره</label>
+                              <input type="file" name="ImageUrl" class="form-control"  multiple/>
+                           </div>
+
+                    <!-- Price  --> 
+                           <div class="form-group">
+                               <label asp-for="product.ProductPrice" class="control-label text-light"> السعر </label>
+                               <input asp-for="product.ProductPrice" class="form-control" type="number" required/>
+                               <span asp-validation-for="product.ProductPrice" class="text-danger"></span>
+                            </div>
+
+                   <!-- Description  -->
+                         <div class="form-group">
+                               <label asp-for="product.ProductDescription" class="control-label text-light">الوصف</label>
+                               <textarea asp-for="product.ProductDescription" class="form-control" type="number" required></textarea>
+                               <span asp-validation-for="product.ProductDescription" class="text-danger"></span>
+                            </div>
+
+                 <!-- Quantity -->
+                        <div class="form-group">
+                               <label asp-for="product.ProductQuantity" class="control-label text-light">الكميه</label>
+                               <input asp-for="product.ProductQuantity" class="form-control" type="number" required/>
+                               <span asp-validation-for="product.ProductQuantity" class="text-danger"></span>
+                         </div>
+
+                 <!-- Size -->
+                          <div class="form-group">
+                               <label asp-for="product.Size" class="control-label text-light">الحجم</label>
+                               <input asp-for="product.Size" class="form-control" required/>
+                               <span asp-validation-for="product.Size" class="text-danger"></span>
+                            </div>
+
+                 <!-- List of MainCategory (حريمي | رجالي | اطفالي) -->
+                      <div class="form-group">
+                          <label asp-for="product.MainCategoryID" class="control-label">الصنف</label>
+                          <select name="mainValue" asp-items="@Model.mainCategory" class="form-select" required>
+                             <option value="">اختر الصنف</option>
+                          </select>
+                      </div>
+
+                 <!-- List of TypeProduct (ملابس علويه| سفليه | فساتين |احذيه) -->
+                     <div class="form-group">
+                          <label asp-for="product.productTypeID" class="control-label">النوع</label>
+                          <select name="typeValue" asp-items="@Model.productType" class="form-select" required>
+                             <option value="">اختر النوع</option>
+                          </select>
+                      </div>
+
+                 <!-- List of Seasson ([true] = summer | [false] = winter) -->
+                     <div class="form-group">
+                          <label asp-for="product.Season" class="control-label">فصل</label>
+                          <select name="product.Season" class="form-select" required>
+                             <option value="" class="disabled">اختر الفصل</option>
+                             <option value="true"> صيف </option>
+                             <option value="false"> شتاء </option>
+                          </select>
+                      </div>
+
+
+                     <!-- Bottom  -->
+                           <div class="col-lg-12 mt-2 mb-2">
+                                <div class="col-lg-6 ">
+                                     
+                                    <!-- Error Message  -->
+                                </div>
+                                <div class="col-lg-6 ">
+                                    <input type="submit" value="اضافه"  class="btn btn-outline-light" />
+                                </div>
+                            </div>
+                     </form>
+                    
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+    </div>

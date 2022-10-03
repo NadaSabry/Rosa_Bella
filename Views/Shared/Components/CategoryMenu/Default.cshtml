@@ -1,0 +1,17 @@
+﻿<li class="nav-item dropdown">
+
+      <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="/Category/Index" role="button" aria-expanded="false">الاصناف</a>
+        <ul class="dropdown-menu">
+            @foreach(var catg in Model)
+            {
+              <li><a class="dropdown-item" href="/ProductType/shop/@catg.Id">
+                      @catg.Name <img src="@catg.CategoyImageUrl" style="width:20px; height:28px;"/>
+                  </a>
+              </li>
+            }
+              <li><a class="dropdown-item" href="#">عرض كل الاصناف</a></li>
+          <li><hr class="dropdown-divider"></li>
+             <li><a class="dropdown-item" href="/Main/Add_MainCategory">اضافه صنف </a></li>
+             <li><a class="dropdown-item" href="#">حذف صنف </a></li>
+       </ul>
+</li>

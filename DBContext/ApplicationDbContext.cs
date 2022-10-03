@@ -1,6 +1,5 @@
 ﻿using Rosa_Bella.Models;
 using Microsoft.EntityFrameworkCore;
-using Rosa_Bella.Models;
 
 public class ApplicationDbContext :DbContext
 {
@@ -18,7 +17,7 @@ public class ApplicationDbContext :DbContext
             .HasKey(b => new { b.productId, b.ImageUrl });
     }
 
-    public DbSet<Category> Categories { get; set; }
+    public DbSet<ProductType> ProductTypes { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Like> Likes { get; set; }

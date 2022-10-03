@@ -9,5 +9,6 @@ namespace Rosa_Bella.Models
         public string? ImageUrl { get; set; }
         public string? Color { get; set; }
 
+        public virtual Product? Products { get; set; }
     }
 }
