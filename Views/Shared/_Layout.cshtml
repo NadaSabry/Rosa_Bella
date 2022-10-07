@@ -27,19 +27,10 @@
                         <li class="nav-item" >
                             <a class="nav-link text-light" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
                         </li>
-
-                        <!--
-                        <li class="nav-item dropdown">
-
-                          <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="/Category/Index" role="button" aria-expanded="false">الاصناف</a>
-                          <ul class="dropdown-menu">
-                             <li><a class="dropdown-item" href="/Main/Add_MainCategory">اضافه صنف </a></li>
-                             <li><a class="dropdown-item" href="#">Delete Category</a></li>
-                             <li><hr class="dropdown-divider"></li>
-                             <li><a class="dropdown-item" href="#">Show Category</a></li>
-                           </ul>
+                         <li class="nav-item" >
+                            <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="Add_Product">اضافه منتج</a>
                         </li>
-                        -->
+
                        
                         @await Component.InvokeAsync("CategoryMenu")
 
@@ -72,7 +63,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted mt-4">
         <div class="container">
             &copy; 2022 - Rosa_Bella - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

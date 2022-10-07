@@ -5,6 +5,7 @@ using NToastNotify;
 using Rosa_Bella.Models;
 using Rosa_Bella.Services;
 using Rosa_Bella.ViewModels;
+using System.Collections;
 using System.Linq;
 
 namespace Rosa_Bella.Controllers
@@ -106,30 +107,48 @@ namespace Rosa_Bella.Controllers
         public IActionResult Display(DisplayProductVM vm, int seasson)
         {
             var Categorys = vm.mainCategory.Where(x => x.Selected).Select(y => y.Value);
-           // Categorys.Select(int.Parse).ToList();
-
             var Types = vm.type.Where(x => x.Selected).Select(y => y.Value);
             vm.product = db.Products.Include(e => e.Images).ToList();
-
-            
-
+            IList _Category_ = new List<int>();
+            IList _type_ = new List<int>();
+            foreach (var category in Categorys)
+            {
+                _Category_.Add(int.Parse(category));
+            }
+            foreach (var type in Types)
+            {
+                _type_.Add(int.Parse(type));
+            }
+               Console.WriteLine(_type_.Count);
+               if(_Category_.Count>0)vm.product = vm.product.Where(t => _Category_.Contains(t.MainCategoryID)).ToList();
+               if (_type_.Count > 0) vm.product = vm.product.Where(t => _type_.Contains(t.productTypeID)).ToList();
             if (seasson > 0)
             {
-                bool b = false; 
-                if(seasson==2) b = true;
+                bool b = false;
+                if (seasson == 2) b = true;
                 vm.product = vm.product.Where(e => e.Season == b).ToList();
-               // vm.product = vm.product.Where(e => e.Id == 1 || e.Id == 3).ToList();
             }
-            //vm.product = vm.product.Where(t => Categorys.Contains(t.MainCategoryID));
-
             vm.mainCategory = db.MainCategorys.Select(n => new SelectListItem { Value = n.Id.ToString(), Text = n.Name }).ToList();
             vm.type = db.ProductTypes.Select(n => new SelectListItem { Value = n.Id.ToString(), Text = n.TypeName }).ToList();
-           
             return View(vm);
+        }
+
+        public IActionResult DisplayByMainCategory(int id)
+        {
+            DisplayProductVM box = new DisplayProductVM();
+            box.mainCategory = db.MainCategorys.Select(n => new SelectListItem { Value = n.Id.ToString(), Text = n.Name }).ToList();
+            box.type = db.ProductTypes.Select(n => new SelectListItem { Value = n.Id.ToString(), Text = n.TypeName }).ToList();
+            box.product = db.Products.Include(e => e.Images).Where(e => e.MainCategoryID == id).ToList();
+            return View("Display", box);
         }
 
         #endregion
 
+        public IActionResult Details(int id)
+        {
+            Product pr = db.Products.Include(e=>e.Images).FirstOrDefault(e=>e.Id==id);
+            return View(pr);
+        }
     }
 }
 

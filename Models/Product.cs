@@ -17,6 +17,10 @@ public class Product
     public int productTypeID { get; set; }
 
     [Required]
+    [ForeignKey("Season")]
+    public int SeasonID { get; set; }
+
+    [Required]
     public string? ProductName { get; set; }
 
     [Required]
@@ -34,14 +38,10 @@ public class Product
     [Required]
     public string? Size { get; set; }
 
-    // 1=[summer]  0=[winter]
-    [Required]
-    public bool Season { get; set; }
-
-
 
     public virtual ProductType? ProductTypes { get; set; }
     public virtual MainCategory? MainCategorys { get; set; }
+    public virtual Season? Seasons { get; set; }
 
     public virtual ICollection<Comment>? Comments { get; set; }
     public virtual ICollection<Image>? Images { get; set; }

@@ -4,14 +4,13 @@
         <ul class="dropdown-menu">
             @foreach(var catg in Model)
             {
-              <li><a class="dropdown-item" href="/ProductType/shop/@catg.Id">
-                      @catg.Name <img src="@catg.CategoyImageUrl" style="width:20px; height:28px;"/>
+              <li><a class="dropdown-item" href="/Product/DisplayByMainCategory/@catg.Id">
+                      @catg.Name <img src="@catg.CategoyImageUrl" style="width:18px; height:20px;"/>
                   </a>
               </li>
             }
-              <li><a class="dropdown-item" href="#">عرض كل الاصناف</a></li>
+              <li><a class="dropdown-item" href="/Product/Display">عرض كل المنتجات</a></li>
           <li><hr class="dropdown-divider"></li>
-             <li><a class="dropdown-item" href="/Main/Add_MainCategory">اضافه صنف </a></li>
-             <li><a class="dropdown-item" href="#">حذف صنف </a></li>
+             <li><a class="dropdown-item" href="/Main/Add_MainCategory">اضافه صنف</a></li>
        </ul>
 </li>
