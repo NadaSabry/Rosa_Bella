@@ -28,8 +28,12 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Category" asp-action="Index">Category</a>
                         </li>
                          <li class="nav-item" >
-                            <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="Add_Product">اضافه منتج</a>
-                        </li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="Add_Product">اضافه_منتج</a>
+                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="ProductType" asp-action="Add_Category">اضافه_نوع_منتج</a>
+                         </li>
+                         
 
                        
                         @await Component.InvokeAsync("CategoryMenu")

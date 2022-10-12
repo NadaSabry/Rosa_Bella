@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Rosa_Bella.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221007195954_add_season")]
+    partial class add_season
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,9 +133,6 @@ namespace Rosa_Bella.Migrations
                         .IsRequired()
                         .HasColumnType("int");
 
-                    b.Property<int>("SeasonID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Size")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -147,8 +146,6 @@ namespace Rosa_Bella.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("MainCategoryID");
-
-                    b.HasIndex("SeasonID");
 
                     b.HasIndex("UserId");
 
@@ -290,12 +287,6 @@ namespace Rosa_Bella.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Rosa_Bella.Models.Season", "Seasons")
-                        .WithMany("Products")
-                        .HasForeignKey("SeasonID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Rosa_Bella.Models.User", null)
                         .WithMany("Products")
                         .HasForeignKey("UserId");
@@ -309,8 +300,6 @@ namespace Rosa_Bella.Migrations
                     b.Navigation("MainCategorys");
 
                     b.Navigation("ProductTypes");
-
-                    b.Navigation("Seasons");
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.MainCategory", b =>
@@ -328,11 +317,6 @@ namespace Rosa_Bella.Migrations
                 });
 
             modelBuilder.Entity("Rosa_Bella.Models.ProductType", b =>
-                {
-                    b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("Rosa_Bella.Models.Season", b =>
                 {
                     b.Navigation("Products");
                 });

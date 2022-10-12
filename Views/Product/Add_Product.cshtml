@@ -1,4 +1,4 @@
-﻿@model Rosa_Bella.ViewModels.AddProductVM
+﻿@model Rosa_Bella.ViewModels.Product_CategoryVM
 
 <div class="container">
         <div class="row">
@@ -74,14 +74,21 @@
                       </div>
 
                  <!-- List of Seasson ([true] = summer | [false] = winter) -->
-                     <div class="form-group">
+                 <div class="form-group">
+                          <label asp-for="product.SeasonID" class="control-label">الصنف</label>
+                          <select name="seasonValue" asp-items="@Model.season" class="form-select" required>
+                             <option value="">اختر الصنف</option>
+                          </select>
+                 </div>
+
+                     @*<div class="form-group">
                           <label asp-for="product.Season" class="control-label">فصل</label>
                           <select name="product.Season" class="form-select" required>
                              <option value="" class="disabled">اختر الفصل</option>
                              <option value="true"> صيف </option>
                              <option value="false"> شتاء </option>
                           </select>
-                      </div>
+                      </div>*@
 
 
                      <!-- Bottom  -->

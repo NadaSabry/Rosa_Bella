@@ -38,13 +38,16 @@
                         </div><br />
 
                     <li><h5> -----الفصل----- </h5></li>
-                    <div class="form-group"> 
-                      <input type="radio" id="summer" name="seasson" value="2">
-                      <label for="summer">صيف</label><br>
-                      <input type="radio" id="winter" name="seasson" value="1">
-                      <label for="winter">شتاء</label><br />
-                    </div>
-                    <br />
+                    <div class="form-group">
+                          @for(int i=0;i<Model.season.Count;i++)
+                           {
+                             <div>
+                                 <input type="hidden" asp-for="@Model.season[i].Value" />
+                                 <input asp-for="season[i].Selected" /> @Model.season[i].Text 
+                             </div>
+                           }
+                     </div><br />
+                    
 
                        <div class="form-group">
                           <input type="submit" value="Search" class="btn btn-danger"/>

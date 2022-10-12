@@ -1,5 +1,101 @@
-﻿@-moz-keyframes quick_cart_pay_show {
-    0% {
+﻿/*Like*/
+
+.like-btn {
+    float: right;
+}
+.like-content-False {
+    color: gray;
+    border:2px solid #eae2e1;
+    padding:5px;
+    width:150px;
+    height:70px;
+    border-radius:5px;
+}
+.like-content-True {
+    color: black;
+    background-color: #fbd0d8;
+    border: 2px solid #f9b9c4;
+    padding: 5px;
+    width: 150px;
+    height: 70px;
+    border-radius: 5px;
+}
+.like-img {
+     width: 50px;
+     height: 50px;
+     float: left;
+     display: flex;
+     margin: 0px 8px 0px 8px;
+}
+.like-text-False {
+    font-size: 22px;
+    margin: 11px;
+    color: grey;
+    font-family: 'Montserrat',sans-serif;
+}
+.like-text-True {
+    font-size: 22px;
+    margin: 11px;
+    color: black;
+    font-family: 'Montserrat',sans-serif;
+}
+
+/*End Like*/
+
+/*Comment*/
+
+.display_1Comment {
+    border: 2px solid gray;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 8px;
+    background-color: #DCDCDC;
+}
+.titl
+{
+    float:left;
+    margin:0px 10px 0px 10px;
+}
+.head {
+    display:flex;
+}
+.name{
+    font-weight:bolder;
+}
+.date
+{
+    font-size:11px;
+    line-height:10px;
+    color:gray;
+}
+.Description {
+    margin: 10px;
+    border: 2px solid silver;
+    border-radius: 15px;
+}
+.Desc{
+    margin:8px;
+}
+.comment {
+    margin: 0px 1px 90px 1px;
+}
+.Delete-comment {
+    float: right;
+    color: #dc3545;
+    margin: 15px;
+    cursor:pointer;
+    padding:5px;
+    font-weight:bold;
+}
+    .Delete-comment:hover {
+        font-weight: bolder;
+        background-color:darkgray;
+        border-radius:5px;
+    }
+
+/* End Comment */
+    @-moz-keyframes quick_cart_pay_show {
+        0% {
         -webkit-transform: rotate(70deg);
         -ms-transform: rotate(70deg);
         transform: rotate(70deg);

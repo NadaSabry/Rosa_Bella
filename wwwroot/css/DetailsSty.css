@@ -1,0 +1,23 @@
+﻿.product-small-img img
+{
+    height:92px;
+    margin:5px 0;
+    cursor:pointer;
+    display:block;
+}
+.product
+{
+    margin-left:10px;
+}
+.img-container img
+{
+    height:500px;
+}
+.product-small-img
+{
+    float:left;
+}
+.img-container {
+    float: left;
+    padding:10px;
+}
