@@ -1,4 +1,5 @@
-﻿@model Rosa_Bella.ViewModels.DisplayProductVM
+﻿@using Rosa_Bella.Services
+@model Rosa_Bella.ViewModels.DisplayProductVM
 
 
 
@@ -78,6 +79,9 @@
                             </p>
 
                             <a href="/Product/Details/@item.Id" class="btn btn-warning">تفاصيل</a>
+                            @if (Authentication.IsAdmin()){
+                                <a href="/Product/Delete/@item.Id" class="btn btn-danger">حذف</a>
+                            }
                         </div>
                       </div>
                     </div>

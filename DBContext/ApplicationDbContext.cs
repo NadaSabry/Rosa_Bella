@@ -25,6 +25,7 @@ public class ApplicationDbContext :DbContext
     public DbSet<Comment> Comments { get; set; }
     public DbSet<MainCategory> MainCategorys { get; set; }
     public DbSet<Season> Seasons { get; set; }
+    public DbSet<ImagesSlideShow> ImagesSlideShows { get; set; }
     
 
 

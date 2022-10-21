@@ -38,7 +38,7 @@ namespace Rosa_Bella.Controllers
             }
             Authentication.SetUser(dbUser);
             ToastNotify.AddSuccessToastMessage("Login Successful");
-            return View();
+            return RedirectToAction("Index", "Home");
         }
         #endregion
 

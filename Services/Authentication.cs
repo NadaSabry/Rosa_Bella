@@ -11,6 +11,12 @@ namespace Rosa_Bella.Services
         { 
             return LoggedInUser != null; 
         }
+        public static bool IsAdmin()
+        {
+            if (LoggedInUser == null)
+                return false;
+            return LoggedInUser.Email == "admin@gmail.com";
+        }
         public static void LoggedOut()
         {
             LoggedInUser = null;

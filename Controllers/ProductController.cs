@@ -175,6 +175,14 @@ namespace Rosa_Bella.Controllers
             if (Authentication.IsLoggedIn())VM.userID = Authentication.LoggedInUser.Id;
             return View(VM);
         }
+
+        public IActionResult Delete(int id)
+        {
+            Product product = db.Products.Find(id);
+            db.Products.Remove(product);
+            db.SaveChanges();
+            return RedirectToAction("Display");
+        }
     }
 }
 

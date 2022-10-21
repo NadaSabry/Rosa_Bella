@@ -1,4 +1,7 @@
-﻿@model Rosa_Bella.Models.ProductType
+﻿@{
+    ViewData["Title"] = "Add Image In Slide Show";
+}
+
 
 
 <div class="container">
@@ -9,28 +12,20 @@
                     <img src="~/Images/add.png" alt="no image" style="width: 100px; height: 100px;" />
                 </div>
                 <h3 class="col-lg-12 text-center text-light">
-                    اضافه نوع جديد
+                    اضافه صوره 
                 </h3>
 
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form method="post" asp-action="Add_Category" enctype="multipart/form-data">
+                        <form method="post" asp-action="add_imgShow" enctype="multipart/form-data">
                           <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                     <!-- Name  -->
-                            <div class="form-group">
-                               <label asp-for="TypeName" class="control-label text-light">الاسم  </label>
-                               <input asp-for="TypeName" class="form-control" required/>
-                               <span asp-validation-for="TypeName" class="text-danger"></span>
-                            </div>
-
-                    <!-- Image  -->     
                             <div class="form-group my-1">
-                              <label class="control-label text-light"> الصوره</label>
-                              <input type="file" name="CategoyImageUrl" class="form-control" required />
+                              <label class="control-label text-light"> الصوره</label><br />
+                              <input type="file" name="ImageUrl" class="form-control" required />
                            </div>
 
-                     <!-- Bottom  -->
+
                            <div class="col-lg-12 mt-2 mb-2">
                                 <div class="col-lg-6 ">
                                      
