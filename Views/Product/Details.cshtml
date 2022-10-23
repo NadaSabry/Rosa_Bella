@@ -38,12 +38,7 @@
             <div class="big">
               <span id="big-image" class="img" quickbeam="image" style="background-image: url('@main')" ></span>
               <div id="banner-gallery" class="swipe">
-                <div class="swipe-wrap">
-                 @*@foreach(var item in Model.Images)
-                 { 
-                  <div onclick="Imgsrc('@item.ImageUrl')"  style="background-image: url('@item.ImageUrl')"></div>
-                <!--  <div style="background-image: url('//cdn.shopify.com/s/files/1/1047/6452/products/tricko1_large.jpg?v=1447104179')"></div> -->
-                 }  *@  
+                <div class="swipe-wrap"> 
               </div>
               </div>
             </div>
@@ -68,13 +63,6 @@
                  <p class="like-text-@Model.LikeIsActive">Like @Model.like.Count()</p>
              </div>
          </div>
-               @*<div class="heart-btn">
-                  <div class="content">
-                    <span class="heart"></span>
-                    <span class="text">Like 12</span>
-                    <span class="numb"></span>
-                  </div>
-               </div>*@
 
               </div>
               </div>

@@ -13,7 +13,7 @@
 <body>
     <header>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-warning border-bottom box-shadow ">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow ">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> <img src="~/Images/logo.png" alt="Girl in a jacket" style="width:80px;height:45px;"> </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -26,35 +26,28 @@
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">الصفحه الرئيسية</a>
                         </li>
                         @await Component.InvokeAsync("CategoryMenu")
+
                        @if (Authentication.IsAdmin())
                        {
                          <li class="nav-item" >
-                            <a class="nav-link text-primary" asp-area="" asp-controller="Product" asp-action="Add_Product">اضافه منتج جديد </a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Product" asp-action="Add_Product">
+                                <img src="/Images/setting.png" style="width:20px;height:20px;">
+                                اضافه منتج 
+                            </a>
                          </li>
                          <li class="nav-item">
-                            <a class="nav-link text-primary" asp-area="" asp-controller="ProductType" asp-action="Add_Category">اضافه نوع منتج</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="ProductType" asp-action="Add_Category">
+                                <img src="/Images/setting.png" style="width:20px;height:20px;">
+                                اضافه نوع منتج
+                            </a>
                          </li>
                        }
-
-                       
-                        
-
                     </ul>
 
 
                    
 
                     <partial name="_loginPartialView"/>
-                    <!--
-                    <ul class="nav navbar-nav navbar-right">
-                       <li class="nav-item">
-                           <a class = "btn btn-outline-danger  my-sm-0 text-light m-1" style="text-decoration:none;" href="/User/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class = "btn btn-danger text-light  my-sm-0 m-1" role="button"  style="text-decoration:none;" href="/User/Register"><span class="glyphicon glyphicon-user"></span>Register</a>
-                         </li>
-                    </ul>
-                    -->
                     
 
                 </div>

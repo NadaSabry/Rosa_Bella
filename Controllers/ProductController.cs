@@ -90,9 +90,13 @@ namespace Rosa_Bella.Controllers
             InsertImages(ImageUrl, Type.product.Id);
 
             ToastNotify.AddSuccessToastMessage("تم الاضافه بنجاح");
-            return View(Type);
+            return RedirectToAction("Display");
         }
         #endregion
+        public IActionResult Edit_Product(int id)
+        {
+            return View();
+        }
 
         #region Display_Product
         [HttpGet]
@@ -178,6 +182,12 @@ namespace Rosa_Bella.Controllers
 
         public IActionResult Delete(int id)
         {
+            IList<Comment> comment = db.Comments.Where(e => e.ProductId == id).ToList();
+            foreach(var item in comment)
+            {
+                db.Comments.Remove(item);
+                db.SaveChanges();
+            }
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
