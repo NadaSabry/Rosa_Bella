@@ -12,5 +12,4 @@ User can't see the pages unauthorized for it
 
 Language: HTML, CSS, JavaScript,C#
 Framework: bootstrap, .Net
-GitHub: https://github.com/NadaSabry/Rosa_Bella
 Youtube: https://youtu.be/fXLPQtJ_rm4
